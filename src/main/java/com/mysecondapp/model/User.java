@@ -2,6 +2,7 @@ package com.mysecondapp.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -30,7 +31,7 @@ public class User {
 	
 	private String lastName;
 	
-	@OneToMany(mappedBy="user")
+	@OneToMany(mappedBy="user", cascade = CascadeType.ALL) ////use cascade to allow deleting
 	private List<Post> posts;
 
 	@ManyToOne
