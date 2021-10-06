@@ -17,7 +17,7 @@ public class User {
 	@Id
 	private Integer id;
 	
-	
+	@JsonManagedReference                       ///used to avoid recursion problem
 	public List<Post> getPosts() {
 		return posts;
 	}
@@ -27,19 +27,30 @@ public class User {
 	}
 
 	private String firstName;
+	
 	private String lastName;
+	
 	@OneToMany(mappedBy="user")
 	private List<Post> posts;
 
 	@ManyToOne
-	@JoinColumn(name="location_id")
+	@JoinColumn(name="locationid", insertable = false, updatable=false)
 	private Location location;
+	
 	private String email;
 
 	public User() {
 		super();
 	}
+	private Integer locationid;
 
+	public Integer getLocationid() {
+	    return locationid;
+	}
+
+	public void setLocationid(Integer locationid) {
+	    this.locationid = locationid;
+	}
 	public User(Integer id, String firstName, String lastName, Location location, String email) {
 		super();
 		this.id = id;
@@ -69,6 +80,7 @@ public class User {
 		return lastName;
 	}
 
+	
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
@@ -77,7 +89,7 @@ public class User {
 	public Location getLocation() {
 		return location;
 	}
-
+	
 	public void setLocation(Location location) {
 		this.location = location;
 	}

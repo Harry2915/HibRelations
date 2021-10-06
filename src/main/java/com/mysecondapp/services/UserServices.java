@@ -26,5 +26,7 @@ public class UserServices {
 		return userRepository.findByLocationId(id);
 	}
 	
-	
+	public void addUser(User user) {
+		userRepository.save(user);
+	}
 }

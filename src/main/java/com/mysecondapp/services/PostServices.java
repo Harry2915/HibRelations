@@ -26,4 +26,8 @@ public class PostServices {
 	public List<Post> findByLocationId(Integer id) {
 	    return postRepository.findByUserId(id);
 	}
+	
+	public void addPosts(Post post) {
+		postRepository.save(post);
+	}
 }
