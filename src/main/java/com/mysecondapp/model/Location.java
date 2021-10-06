@@ -2,6 +2,7 @@ package com.mysecondapp.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -17,7 +18,7 @@ public class Location {
 
 	private String name;
 
-	@OneToMany(mappedBy="location")   ////used to tell mapping is already done
+	@OneToMany(mappedBy="location" , cascade = CascadeType.ALL)   ////used to tell mapping is already done
 	private List<User> users;
 
 	public Location(Integer id, String name) {

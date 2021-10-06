@@ -30,4 +30,8 @@ public class LocationServices {
 	public void updateLocation(Location location) {
 		locationRepository.save(location);
 	}
+	
+	public void deleteLocation(Integer id) {
+		locationRepository.deleteById(id);
+	}
 }
