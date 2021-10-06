@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,16 +29,19 @@ public class PostController {
 	public Optional<Post> getPostById(@PathVariable Integer id) {
 		return postService.findById(id);
 	}
-	
+
 	@GetMapping("/posts/user/{id}/posts")
 	public List<Post> getPostsByUser(@PathVariable Integer id) {
-	    return postService.findByLocationId(id);
+		return postService.findByLocationId(id);
 	}
-	
-	@PostMapping("/post/addNewPost")
-		public void addNewPost(@RequestBody Post post) {
-			postService.addPosts(post);
-		}
-	
 
+	@PostMapping("/post/addNewPost")
+	public void addNewPost(@RequestBody Post post) {
+		postService.addPosts(post);
+	}
+
+	@PutMapping("/updatePost")
+	public void updatePost(@RequestBody Post post) {
+		postService.updatePosts(post);
+	}
 }
